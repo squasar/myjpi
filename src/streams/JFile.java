@@ -11,6 +11,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -67,4 +70,41 @@ public class JFile {
     		e.printStackTrace();
     	}
     }
+    public void makeDirectory(String f_path){
+        Path p = Paths.get(f_path); //("C:\\Directory\\SubDir\\SubDir2");
+        if (!Files.exists(p)) {
+            try {
+                Files.createDirectories(p);
+            } catch (IOException e) {
+                //fail to create directory
+                e.printStackTrace();
+            }
+        }
+    }
+    public void deleteDirectory(String f_path){//Denenmeli
+        Path p = Paths.get(f_path); //("C:\\Directory\\SubDir\\SubDir2");
+        if (!Files.exists(p)) {
+            try {
+                Files.delete(p);
+            } catch (IOException e) {
+                //fail to create directory
+                e.printStackTrace();
+            }
+        }
+    }
+    public void listAllFiles(String f_path){
+        File folder = new File(f_path);//("dizin/yol");
+        File[] listOfFiles = folder.listFiles();
+
+            for (int i = 0; i < listOfFiles.length; i++) {
+                if (listOfFiles[i].isFile()) {
+                System.out.println("Dosya " + listOfFiles[i].getName());
+                } else if (listOfFiles[i].isDirectory()) {
+                  System.out.println("Dizin " + listOfFiles[i].getName());
+                    }
+            }
+    }
+    //kopyalama ve tasima islemleri
+    //parse islemleri
+    //sistem dosyalari ve uygulama dosyalariyla islemler
 }
