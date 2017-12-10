@@ -55,7 +55,6 @@ public class JFile {
         writer.close();
         }
     }
-    
     public void deleteAFile(String filename_path){
         try{
                 File file = new File(filename_path);
