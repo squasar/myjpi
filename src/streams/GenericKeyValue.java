@@ -27,7 +27,6 @@ public class GenericKeyValue<Keys, Values> {
             values[j]=gd_values[j];
             }
         }
-        throw new UnsupportedOperationException("Not supported yet.");
     }
     
     public Hashtable getHashtable(){
