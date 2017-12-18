@@ -34,9 +34,16 @@ public class FProperties {
         chan_prop_filename=changed_properties_filename;
     }
     
-    public void setAllProps(Vector gd_keys, Vector gd_values) throws IOException, FileNotFoundException{
+    /**
+     *
+     * @param gd_keys
+     * @param gd_values
+     * @throws IOException
+     * @throws FileNotFoundException
+     */
+    public void setAllProps(Vector<GenericData> gd_keys, Vector<GenericData> gd_values) throws IOException, FileNotFoundException{
         
-        GenericKeyValue<GenericData,GenericData> obj=new GenericKeyValue<GenericData,GenericData>(gd_keys,gd_values);
+        GenericKeyValue<GenericData,GenericData> obj=new GenericKeyValue<>(gd_keys,gd_values);
         Hashtable th= obj.getHashtable();
         FileInputStream in_def = null;
         FileInputStream in_chan = null;
@@ -69,9 +76,16 @@ public class FProperties {
         }        
     }
    
-    public void setChangedProp(Vector gd_keys, Vector gd_values) throws IOException, FileNotFoundException{
+    /**
+     *
+     * @param gd_keys
+     * @param gd_values
+     * @throws IOException
+     * @throws FileNotFoundException
+     */
+    public void setChangedProp(Vector<GenericData> gd_keys, Vector<GenericData> gd_values) throws IOException, FileNotFoundException{
         
-        GenericKeyValue<GenericData,GenericData> obj=new GenericKeyValue<GenericData,GenericData>(gd_keys,gd_values);
+        GenericKeyValue<GenericData,GenericData> obj=new GenericKeyValue<>(gd_keys,gd_values);
         Hashtable th= obj.getHashtable();
                 
         FileInputStream in = null;
@@ -115,9 +129,16 @@ public class FProperties {
         }
     }
    
-    public void setDefaultProp(Vector gd_keys, Vector gd_values) throws IOException, FileNotFoundException{
+    /**
+     *
+     * @param gd_keys
+     * @param gd_values
+     * @throws IOException
+     * @throws FileNotFoundException
+     */
+    public void setDefaultProp(Vector<GenericData> gd_keys, Vector<GenericData> gd_values) throws IOException, FileNotFoundException{
 
-        GenericKeyValue<GenericData,GenericData> obj=new GenericKeyValue<GenericData,GenericData>(gd_keys,gd_values);
+        GenericKeyValue<GenericData,GenericData> obj=new GenericKeyValue<>(gd_keys,gd_values);
         Hashtable th= obj.getHashtable();
         
         FileInputStream in = null;
