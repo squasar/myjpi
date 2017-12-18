@@ -35,7 +35,7 @@ public class FProperties {
     
     public void setAllProps(GenericData[] gd_keys, GenericData[] gd_values) throws IOException, FileNotFoundException{
         
-        GenericKeyValue<GenericData> obj=new GenericKeyValue<GenericData>(gd_keys,gd_values);
+        GenericKeyValue obj=new GenericKeyValue(gd_keys,gd_values);
         Hashtable th= obj.getHashtable();
         FileInputStream in_def = null;
         FileInputStream in_chan = null;
@@ -70,7 +70,7 @@ public class FProperties {
    
     public void setChangedProp(GenericData[] gd_keys, GenericData[] gd_values) throws IOException, FileNotFoundException{
         
-        GenericKeyValue<GenericData> obj=new GenericKeyValue<GenericData>(gd_keys,gd_values);
+        GenericKeyValue obj=new GenericKeyValue(gd_keys,gd_values);
         Hashtable th= obj.getHashtable();
                 
         FileInputStream in = null;
@@ -116,7 +116,7 @@ public class FProperties {
     
     public void setDefaultProp(GenericData gd_keys[], GenericData gd_values[]) throws IOException, FileNotFoundException{
 
-        GenericKeyValue<GenericData> obj=new GenericKeyValue<GenericData>(gd_keys,gd_values);
+        GenericKeyValue obj=new GenericKeyValue(gd_keys,gd_values);
         Hashtable th= obj.getHashtable();
         
         FileInputStream in = null;

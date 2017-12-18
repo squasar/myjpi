@@ -11,19 +11,19 @@ import java.util.Hashtable;
 /**
  *
  * @author Suleyman
- * @param <GenericData>
+ * 
  */
-public class GenericKeyValue<GenericData> {
+public class GenericKeyValue<Keys, Values> {
 
-    GenericData [] keys;
-    GenericData [] values;
+    Keys [] keys;
+    Values [] values;
     
-    GenericKeyValue(GenericData[] gd_keys, GenericData[] gd_values) {
-        for(int i=0, j=0; i<keys.length || j<values.length; i++, j++){
-            if(i<keys.length){
+    GenericKeyValue(Keys[] gd_keys, Values[] gd_values) {
+        for(int i=0, j=0; i<gd_keys.length || j<gd_values.length; i++, j++){
+            if(i<gd_keys.length){
             keys[i]=gd_keys[i];
             }
-            if(j<values.length){
+            if(j<gd_values.length){
             values[j]=gd_values[j];
             }
         }
