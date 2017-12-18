@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package myapplet;
+package jsystem;
 
 /**
  *
  * @author Suleyman
  */
-public class JApplet {
+public class JSystem {
     
 }

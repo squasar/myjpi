@@ -40,10 +40,6 @@ public class DBConnect {
     public void closeConnection() throws SQLException{
         close_connection();
     } 
-//    
-//
-//
-    //EX: String host = "jdbc:derby://localhost:1527/Employees";
     private void connect(){
     
         try {

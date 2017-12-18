@@ -25,16 +25,13 @@ public class DBQuery extends DBStatement {
         public ResultSet _sonuclar;
         Vector sonuclar=new Vector();
         
-    public void Query(String host, String uName, String uPass){
-        this.host=host;
-        this.uName=uName;
-        this.uPass=uPass;
+    public DBQuery(String host, String uName, String uPass){
         super.host=host;
         super.uName=uName;
         super.uPass=uPass;    
     }
     
-    public void execProcedure(String sql_procedure,SQLType type) throws SQLException{     //ResultSet execProcedure(String sql_procedure,SQLType type) throws SQLException{     
+    public void execProcedure(String sql_procedure,SQLType type) throws SQLException{
         if(type.equals(null)){
             _sonuclar=super.exprocedure(sql_procedure);
                 while(_sonuclar.next()){
@@ -50,7 +47,7 @@ public class DBQuery extends DBStatement {
         }
     }
     
-    public void execSql(String sql) throws SQLException{ //ResultSet execSql(String sql) throws SQLException{
+    public void execSql(String sql) throws SQLException{
         _sonuclar=super.exquery(sql);
                 while(_sonuclar.next()){
                     sonuclar.add(_sonuclar);
@@ -84,8 +81,6 @@ public class DBQuery extends DBStatement {
     public ResultSet getSonuclarResultSet(){
         return _sonuclar;
     }
-    //ResultSet olarak dondurmek daha iyi ancak asagidaki metod tum sonuclarin listesini vektor olarak verecektir.
-    //Extra olarak da ResultSet i bosaltacaktir.
     //Vector olarak almak en mantikisi
     public Vector getSonuclarVector() throws SQLException{
     _sonuclar.close();

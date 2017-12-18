@@ -5,15 +5,11 @@
  */
 package streams;
 
-import static com.sun.org.apache.xml.internal.serialize.OutputFormat.Defaults.Encoding;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +18,6 @@ import java.util.logging.Logger;
  * @author Suleyman
  */
 public class Flow {
-    
     
     public GenericData serialize(String filename, GenericData gd){
         try(ObjectOutputStream objos=new ObjectOutputStream(new FileOutputStream(filename)))
@@ -35,11 +30,10 @@ public class Flow {
         return gd;
     }
     
-    
     public GenericData deserialize(String filename, GenericData gd){
         
-        try(ObjectInputStream obins=new ObjectInputStream(new FileInputStream(filename))){
-            
+        try(ObjectInputStream obins=new ObjectInputStream(new FileInputStream(filename)))
+        {
            gd=(GenericData)obins.readObject();
             
         } catch (IOException ex) {

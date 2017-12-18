@@ -35,12 +35,20 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author Suleyman
  */
 public class JFile {
-
-    public void readAFile(String filename) throws IOException{
+    
+    String file_name;
+    String file_path;
+    
+    public JFile(String fileName, String filePath){
+        file_name=fileName;
+        file_path=filePath;
+    }
+    
+    public void readAFile() throws IOException{
         FileInputStream f_in = null;
         int sayac;
         try {
-            f_in=new FileInputStream(filename);
+            f_in=new FileInputStream(file_name);
             do{
                 sayac=f_in.read();
                 if(sayac != -1) System.out.print((char) sayac);
@@ -58,10 +66,10 @@ public class JFile {
         }
     }
     
-    public void writeToAFile(String filename, String record){
+    public void writeToAFile(String record){
         PrintWriter writer=null;
         try {
-            writer = new PrintWriter(filename,"UTF-8" );
+            writer = new PrintWriter(file_name,"UTF-8" );
             writer.println(record);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Flow.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,9 +79,9 @@ public class JFile {
         writer.close();
         }
     }
-    public void deleteAFile(String filename_path){
+    public void deleteAFile(){
         try{
-                File file = new File(filename_path);
+                File file = new File(file_path);
     		if(file.delete()){
     			System.out.println(file.getName() + " Silindi!");
     		}else{
@@ -83,8 +91,8 @@ public class JFile {
     		e.printStackTrace();
     	}
     }
-    public void makeDirectory(String f_path){
-        Path p = Paths.get(f_path); //("C:\\Directory\\SubDir\\SubDir2");
+    public void makeDirectory(){
+        Path p = Paths.get(file_path); //("C:\\Directory\\SubDir\\SubDir2");
         if (!Files.exists(p)) {
             try {
                 Files.createDirectories(p);
@@ -94,8 +102,8 @@ public class JFile {
             }
         }
     }
-    public void deleteDirectory(String f_path){//Denenmeli
-        Path p = Paths.get(f_path); //("C:\\Directory\\SubDir\\SubDir2");
+    public void deleteDirectory(){//Denenmeli
+        Path p = Paths.get(file_path); //("C:\\Directory\\SubDir\\SubDir2");
         if (!Files.exists(p)) {
             try {
                 Files.delete(p);
@@ -105,8 +113,8 @@ public class JFile {
             }
         }
     }
-    public void listAllFiles(String f_path){
-        File folder = new File(f_path);//("dizin/yol");
+    public void listAllFiles(){
+        File folder = new File(file_path);//("dizin/yol");
         File[] listOfFiles = folder.listFiles();
 
             for (int i = 0; i < listOfFiles.length; i++) {
@@ -139,9 +147,9 @@ public class JFile {
     
     
         //parse islemleri
-    public void domParse(String f_name, String elementsByTagName){
+    public void domParse(String elementsByTagName){
             try {
-                File inputFile = new File(f_name);
+                File inputFile = new File(file_name);
                 //f_name="abc.xml"
                 //elementsByTagName="liste içindeki itemlerin ismi"
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -184,8 +192,9 @@ public class JFile {
                                             e.printStackTrace();
                                             }
                                             }
-                //Sax parsing
+                //Sax parsing example
                 public class UserHandler extends DefaultHandler {
+                    
                         boolean bFirstName = false;
                         boolean bLastName = false;
                         boolean bNickName = false;
@@ -193,56 +202,60 @@ public class JFile {
 
                         public void startElement(String uri, 
                         String localName, String qName, Attributes attributes) throws SAXException {
-                        if (qName.equalsIgnoreCase("student")) {
-                        String rollNo = attributes.getValue("rollno");
-                        System.out.println("Roll No : " + rollNo);
+                    
+                            if (qName.equalsIgnoreCase("student")) {
+                                String rollNo = attributes.getValue("rollno");
+                                System.out.println("Roll No : " + rollNo);
                         } else if (qName.equalsIgnoreCase("firstname")) {
-                        bFirstName = true;
+                                bFirstName = true;
                         } else if (qName.equalsIgnoreCase("lastname")) {
-                        bLastName = true;
+                                bLastName = true;
                         } else if (qName.equalsIgnoreCase("nickname")) {
-                        bNickName = true;
+                                bNickName = true;
                         }
                         else if (qName.equalsIgnoreCase("marks")) {
-                        bMarks = true;
+                                bMarks = true;
                         }
                 }
                 @Override
                 public void endElement(String uri, 
                 String localName, String qName) throws SAXException {
-                if (qName.equalsIgnoreCase("student")) {
-                System.out.println("End Element :" + qName);
+                
+                    if (qName.equalsIgnoreCase("student")) {
+                        System.out.println("End Element :" + qName);
                 }
                 }
+                
                 @Override
                 public void characters(char ch[], int start, int length) throws SAXException {
-                if (bFirstName) {
-                System.out.println("First Name: " 
-                + new String(ch, start, length));
-                bFirstName = false;
+                
+                    if (bFirstName) {
+                        System.out.println("First Name: " 
+                        + new String(ch, start, length));
+                        bFirstName = false;
                 } else if (bLastName) {
-                System.out.println("Last Name: " + new String(ch, start, length));
-                bLastName = false;
+                        System.out.println("Last Name: " + new String(ch, start, length));
+                        bLastName = false;
                 } else if (bNickName) {
-                System.out.println("Nick Name: " + new String(ch, start, length));
-                bNickName = false;
+                        System.out.println("Nick Name: " + new String(ch, start, length));
+                        bNickName = false;
                 } else if (bMarks) {
-                System.out.println("Marks: " + new String(ch, start, length));
-                bMarks = false;
+                        System.out.println("Marks: " + new String(ch, start, length));
+                        bMarks = false;
                 }
                 }
                 }
         
-    public void saxParse(String f_name){ 
+    public void saxParse(){ 
         try {
-        File inputFile = new File(f_name);
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-        SAXParser saxParser = factory.newSAXParser();
-        UserHandler userhandler = new UserHandler();
-        saxParser.parse(inputFile, userhandler); 
+            File inputFile = new File(file_name);
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser saxParser = factory.newSAXParser();
+            UserHandler userhandler = new UserHandler();
+            saxParser.parse(inputFile, userhandler); 
+            
         } catch (Exception e) {
         e.printStackTrace();
         }
         }
-            //sistem dosyalari ve uygulama dosyalariyla islemler
-        }
+}

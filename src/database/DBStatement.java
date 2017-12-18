@@ -22,17 +22,6 @@ import java.util.logging.Logger;
  *
  * @author Suleyman
  * 
- * Veritabanina acilan baglanti uzerinden sql sorgularini veya calistirilacak
- * procedure leri yollama islemlerinin yapildigi ve sonuc olarak da
- * ResultSet donduruldugu sinif.
- * 
- * bir alt sinifta bu metodlari ozellestirmeler icin kullanip ayarlayacaz.
- * 
- * daha sonra ise belli basli arayuzler olusturup statements lari daha iyi kullanacaz
- * 
- * yine daha sonra olusturulacak arayuzler, belli dosyalari veritabani tablosuna donusturebilecek.
- * 
- * en son adimda ise modul testi gerceklestirilecek.
  * 
  * 
  */
@@ -89,11 +78,7 @@ public class DBStatement extends DBConnect {
    
    
 }//end createXMLTable
-    
-    
-    
-    
-    
+
     public ResultSet exprocedure(String procedure) throws SQLException{
         
         CallableStatement cstmt=null;
