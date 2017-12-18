@@ -19,11 +19,13 @@ public class GenericKeyValue<GenericData> {
     GenericData [] values;
     
     GenericKeyValue(GenericData[] gd_keys, GenericData[] gd_values) {
-        for(int i=0; i<keys.length; i++){
+        for(int i=0, j=0; i<keys.length || j<values.length; i++, j++){
+            if(i<keys.length){
             keys[i]=gd_keys[i];
-        }
-        for(int i=0; i<values.length; i++){
-            values[i]=gd_values[i];
+            }
+            if(j<values.length){
+            values[j]=gd_keys[j];
+            }
         }
         throw new UnsupportedOperationException("Not supported yet.");
     }
