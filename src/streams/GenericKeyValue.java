@@ -7,40 +7,43 @@ package streams;
 
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Vector;
 
 /**
  *
  * @author Suleyman
+ * @param <Keys>
+ * @param <Values>
  * 
  */
 public class GenericKeyValue<Keys, Values> {
 
-    Keys [] keys;
-    Values [] values;
+    Vector<Keys> keys = new Vector<Keys>();
+    Vector<Values> values = new Vector<Values>();
     
-    GenericKeyValue(Keys[] gd_keys, Values[] gd_values) {
-        for(int i=0, j=0; i<gd_keys.length || j<gd_values.length; i++, j++){
-            if(i<gd_keys.length){
-            keys[i]=gd_keys[i];
+    GenericKeyValue(Vector<Keys> gd_keys, Vector<Values> gd_values) {
+        for(int i=0, j=0; i<gd_keys.capacity() || j<gd_values.capacity(); i++, j++){
+            if(i<gd_keys.capacity()){
+                keys.add((Keys) gd_keys.get(i));
             }
-            if(j<gd_values.length){
-            values[j]=gd_values[j];
+            if(j<gd_values.capacity()){
+                values.add((Values) gd_values.get(j));
             }
         }
     }
     
     public Hashtable getHashtable(){
         Hashtable htable = new Hashtable();
-        for(int i=0; i<keys.length; i++){
-            htable.put(keys[i], values[i]);
+        for(int i=0; i<keys.capacity(); i++){
+            htable.put(keys.get(i), values.get(i));
         }
         return htable;
     }
     
     public HashMap getHashMap(){
         HashMap hmap = new HashMap();
-        for(int i=0; i<keys.length; i++){
-            hmap.put(keys[i], values[i]);
+        for(int i=0; i<keys.capacity(); i++){
+            hmap.put(keys.get(i), values.get(i));
         }
         return hmap;
     }
