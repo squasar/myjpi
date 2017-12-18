@@ -24,7 +24,7 @@ public class GenericKeyValue<GenericData> {
             keys[i]=gd_keys[i];
             }
             if(j<values.length){
-            values[j]=gd_keys[j];
+            values[j]=gd_values[j];
             }
         }
         throw new UnsupportedOperationException("Not supported yet.");
