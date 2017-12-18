@@ -113,7 +113,7 @@ public class FProperties {
             out.close();
         }
     }
-    
+   
     public void setDefaultProp(GenericData gd_keys[], GenericData gd_values[]) throws IOException, FileNotFoundException{
 
         GenericKeyValue obj=new GenericKeyValue(gd_keys,gd_values);
