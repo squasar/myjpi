@@ -18,8 +18,8 @@ import java.util.Vector;
  */
 public class GenericKeyValue<Keys, Values> {
 
-    Vector<Keys> keys = new Vector<Keys>();
-    Vector<Values> values = new Vector<Values>();
+    Vector<Keys> keys;
+    Vector<Values> values;
     
     GenericKeyValue(Vector<Keys> gd_keys, Vector<Values> gd_values) {
         for(int i=0, j=0; i<gd_keys.capacity() || j<gd_values.capacity(); i++, j++){
