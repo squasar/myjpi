@@ -41,9 +41,13 @@ public class FProperties {
      * @throws IOException
      * @throws FileNotFoundException
      */
-    public void setAllProps(Vector<GenericData> gd_keys, Vector<GenericData> gd_values) throws IOException, FileNotFoundException{
+    public void setAllProps(Vector<GenericData> gd_keys, Vector<GenericData> gd_values) throws IOException, 
+            FileNotFoundException, InstantiationException, IllegalAccessException{
         
-        GenericKeyValue<GenericData,GenericData> obj=new GenericKeyValue<>(gd_keys,gd_values);
+        GenericKeyValue<GenericData,GenericData> obj= GenericKeyValue.class.newInstance();
+        obj.keys=gd_keys;
+        obj.values=gd_values;
+        
         Hashtable th= obj.getHashtable();
         FileInputStream in_def = null;
         FileInputStream in_chan = null;
@@ -83,9 +87,13 @@ public class FProperties {
      * @throws IOException
      * @throws FileNotFoundException
      */
-    public void setChangedProp(Vector<GenericData> gd_keys, Vector<GenericData> gd_values) throws IOException, FileNotFoundException{
+    public void setChangedProp(Vector<GenericData> gd_keys, Vector<GenericData> gd_values) throws IOException, 
+            FileNotFoundException, InstantiationException, IllegalAccessException{
         
-        GenericKeyValue<GenericData,GenericData> obj=new GenericKeyValue<>(gd_keys,gd_values);
+        GenericKeyValue<GenericData,GenericData> obj= GenericKeyValue.class.newInstance();
+        obj.keys=gd_keys;
+        obj.values=gd_values;
+        
         Hashtable th= obj.getHashtable();
                 
         FileInputStream in = null;
@@ -136,9 +144,12 @@ public class FProperties {
      * @throws IOException
      * @throws FileNotFoundException
      */
-    public void setDefaultProp(Vector<GenericData> gd_keys, Vector<GenericData> gd_values) throws IOException, FileNotFoundException{
+    public void setDefaultProp(Vector<GenericData> gd_keys, Vector<GenericData> gd_values) throws IOException, 
+            FileNotFoundException, InstantiationException, IllegalAccessException{
 
-        GenericKeyValue<GenericData,GenericData> obj=new GenericKeyValue<>(gd_keys,gd_values);
+        GenericKeyValue<GenericData,GenericData> obj= GenericKeyValue.class.newInstance();
+        obj.keys=gd_keys;
+        obj.values=gd_values;
         Hashtable th= obj.getHashtable();
         
         FileInputStream in = null;
