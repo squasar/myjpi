@@ -32,6 +32,11 @@ public class GenericKeyValue<Keys, Values> {
         }
     }
     
+    public void addKeyValuePair(GenericData<Keys> key, GenericData<Values> value){
+        keys.add((Keys) key);
+        values.add((Values) value);
+    }
+    
     public Hashtable getHashtable(){
         Hashtable htable = new Hashtable();
         for(int i=0; i<keys.capacity(); i++){
