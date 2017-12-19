@@ -70,6 +70,7 @@ public class FProperties {
    
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FProperties.class.getName()).log(Level.SEVERE, null, ex);
+            
         } catch (IOException ex) {
             Logger.getLogger(FProperties.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
