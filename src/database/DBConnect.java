@@ -21,7 +21,6 @@ import java.util.logging.Logger;
  * https://www.tutorialspoint.com/jdbc/jdbc-result-sets.htm
 */
 
-
 public class DBConnect {
         
     protected Connection con;
