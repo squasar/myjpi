@@ -44,6 +44,10 @@ public class JFile {
         file_path=filePath;
     }
     
+    public JFile(String filename){
+        file_name=filename;
+    }
+    
     public void readAFile() throws IOException{
         FileInputStream f_in = null;
         int sayac;

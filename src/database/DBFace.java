@@ -5,7 +5,15 @@
  */
 package database;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.SAXException;
 import streams.JFile;
 
 
@@ -15,20 +23,37 @@ import streams.JFile;
  */
 public class DBFace {
 
-      JFile j_file;  
       DBQuery query;
       
       //EX: String host = "jdbc:derby://localhost:1527/Employees";
-      DBFace(String host, String uName, String uPass, String xml_filename, String xml_filepath){
-        j_file=new JFile(xml_filename,xml_filepath);
+      DBFace(String host, String uName, String uPass){
         query=new DBQuery(host ,uName, uPass);
       }
-    
-    //Sorgular XML dosyasinda tutulacagindan;
-    //XML dosyasinin yapisini olustur.
-    //XML dosyasina parse islemini yap.(JFile daki parse metodlarini bu ornege gore tekrar sekillendir.)
-    //DBQuery nesnesini parse edilecek olan Xml dosyasindaki sorgular icin hazir hale getir.
-    //Ve...  
+      public void exec_sql_query(int id){
+          saxParse("mqueries.xml",id);
+      }
+      
+      public void saxParse(String filename, int id){
+            File inputFile = new File(filename);
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser saxParser;
+        try {
+            saxParser = factory.newSAXParser();
+            ParseXMLQueries userhandler = new ParseXMLQueries(id);
+            saxParser.parse(inputFile, userhandler);
+            
+            //Results
+            query.exquery(userhandler.get_sql());
+
+        } catch (ParserConfigurationException ex) {
+        } catch (SAXException ex) {
+        } catch (IOException ex) {
+              Logger.getLogger(DBFace.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (SQLException ex) {
+              Logger.getLogger(DBFace.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      
+      }
       
       public void closeConnection() throws SQLException{
           query.endConnection();

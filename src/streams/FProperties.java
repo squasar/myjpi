@@ -45,8 +45,7 @@ public class FProperties {
             FileNotFoundException, InstantiationException, IllegalAccessException{
         
         GenericKeyValue<GenericData,GenericData> obj= GenericKeyValue.class.newInstance();
-        obj.keys=gd_keys;
-        obj.values=gd_values;
+        obj.setAll(gd_keys, gd_values);
         
         Hashtable th= obj.getHashtable();
         FileInputStream in_def = null;
@@ -92,8 +91,7 @@ public class FProperties {
             FileNotFoundException, InstantiationException, IllegalAccessException{
         
         GenericKeyValue<GenericData,GenericData> obj= GenericKeyValue.class.newInstance();
-        obj.keys=gd_keys;
-        obj.values=gd_values;
+        obj.setAll(gd_keys, gd_values);
         
         Hashtable th= obj.getHashtable();
                 
@@ -149,8 +147,8 @@ public class FProperties {
             FileNotFoundException, InstantiationException, IllegalAccessException{
 
         GenericKeyValue<GenericData,GenericData> obj= GenericKeyValue.class.newInstance();
-        obj.keys=gd_keys;
-        obj.values=gd_values;
+        obj.setAll(gd_keys, gd_values);
+        
         Hashtable th= obj.getHashtable();
         
         FileInputStream in = null;

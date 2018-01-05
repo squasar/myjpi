@@ -9,6 +9,7 @@ package jnetwork;
  *
  * @author Suleyman
  */
-public class JNetwork {
-    //Adjust connections
+public class RawSocket {
+//implement raw_socket by using JNI
+//https://www.savarese.com/software/rocksaw/    
 }
