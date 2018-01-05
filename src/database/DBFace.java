@@ -14,7 +14,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
-import streams.JFile;
 
 
 /**
@@ -31,6 +30,14 @@ public class DBFace {
       }
       public void exec_sql_query(int id){
           saxParse("mqueries.xml",id);
+      }
+      
+      public void exec_sql_query(String sql) throws SQLException{
+          query.execSql(sql);
+      }
+      
+      public DBQuery getQuery(){
+          return query;
       }
       
       public void saxParse(String filename, int id){

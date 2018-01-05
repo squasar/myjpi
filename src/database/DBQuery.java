@@ -32,6 +32,7 @@ public class DBQuery extends DBStatement {
     }
     
     public void execProcedure(String sql_procedure,SQLType type) throws SQLException{
+        sonuclar.clear();
         if(type.equals(null)){
             _sonuclar=super.exprocedure(sql_procedure);
                 while(_sonuclar.next()){
@@ -48,6 +49,7 @@ public class DBQuery extends DBStatement {
     }
     
     public void execSql(String sql) throws SQLException{
+        sonuclar.clear();
         _sonuclar=super.exquery(sql);
                 while(_sonuclar.next()){
                     sonuclar.add(_sonuclar);
