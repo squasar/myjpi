@@ -69,7 +69,9 @@ public class DBQuery extends DBStatement {
          int c;
          ByteArrayOutputStream bos = new ByteArrayOutputStream();
          while (( c = xmlInputStream.read ()) != -1)
-            bos.write(c);
+            {
+                bos.write(c);
+            }
             sonuclar.add(bos.toString());
          //Print results
          //System.out.println(bos.toString());
